@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org/">
+<head>
+<meta charset="ISO-8859-1">
+<title>Registration</title>
+</head>
+<body>
+    <form th:action="@{/customer/save}" method="post">
+
+<pre>
+*First Name: <input type="text" name="fname" required="required">
+ Last Name: <input type="text" name="lname" required="required">
+*User Name: <input type="text" name="uname" required="required">
+ 
+*Password: <input type="password" name="password">
+*Confirm Password: <input type="password" name="cpassword">
+
+*Gender: <input type="radio" name="gender" value="MALE" required="required"> MALE
+         <input type="radio" name="gender" value="FEMALE" required="required"> FEMALE
+         <input type="radio" name="gender" value="TRANSGENDER" required="required"> TRANSGENDER
+ 
+*Date Of Birth: <input type="date" name="dob" required="required">
+ 
+
+*E-Mail: <input type="email" name="email">
+*PH-No: <input type="text" name="phone">
+ Address: <textarea rows="5" cols="50" name="address"></textarea>
+ 
+ Address Type: <input type="radio" name="typeOfAddress" value="Permenant" required="required"> Permanent Address
+         <input type="radio" name="typeOfAddress" value="Current" required="required"> Current Address
+ 
+ ID Proof: <input type="checkbox" name="idProof" value="Aadhar Card"> Aadhar Card
+      <input type="checkbox" name="idProof" value="Passport"> Passport
+      <input type="checkbox" name="idProof" value="Voter ID"> Voter ID
+      <input type="checkbox" name="idProof" value="Pancard"> Pancard
+      <input type="checkbox" name="idProof" value="Driving License"> Driving License
+      
+ Customer Type: <input type="radio" name="customerType" value="Member" required="required"> Member
+         <input type="radio" name="customerType" value="Normal" required="required"> Normal
+
+<input type="submit" value="REGISTER">
+</pre>
+
+</form>
+
+<span th:text="${msg}"></span>
+
+</body>
+</html>
