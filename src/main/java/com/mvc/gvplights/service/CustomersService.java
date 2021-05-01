@@ -1,5 +1,7 @@
 package com.mvc.gvplights.service;
 
+import java.util.List;
+
 import com.mvc.gvplights.model.Customers;
 
 public interface CustomersService {
@@ -8,10 +10,12 @@ public interface CustomersService {
 	
 	//public String update();
 	
-	//public String delete();
+	//Delete
+	public void delete(Integer cid);
 	
 	//public String getCusId();
 	
-	//public String list();
+	//List of customers
+	public List<Customers> listAllCustomers();
 
 }

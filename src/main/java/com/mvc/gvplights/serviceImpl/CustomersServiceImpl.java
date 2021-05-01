@@ -1,5 +1,7 @@
 package com.mvc.gvplights.serviceImpl;
 
+import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +25,21 @@ public class CustomersServiceImpl implements CustomersService {
 		Customers cus = cusDao.save(cusObj);
 		log.info("Ended ServiceImpl :: CustomersServiceImpl :: save()");
 		return cus;
+	}
+
+	@Override
+	public List<Customers> listAllCustomers() {
+		log.info("Started ServiceImpl :: CustomersServiceImpl :: listAllCustomers()");
+		List<Customers> cuslist = cusDao.findAll();
+		log.info("Ended ServiceImpl :: CustomersServiceImpl :: listAllCustomers()");
+		return cuslist;
+	}
+
+	@Override
+	public void delete(Integer cid) {
+		log.info("Started ServiceImpl :: CustomersServiceImpl :: delete()");
+		cusDao.deleteById(cid);;
+		log.info("Ended ServiceImpl :: CustomersServiceImpl :: delete()");
 	}
 
 }

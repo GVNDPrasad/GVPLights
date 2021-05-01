@@ -5,9 +5,10 @@
 <title>Registration</title>
 </head>
 <body>
-    <form th:action="@{/customer/save}" method="post">
+    <form th:action="@{/customers/save}" method="post">
 
 <pre>
+
 *First Name: <input type="text" name="fname" required="required">
  Last Name: <input type="text" name="lname" required="required">
 *User Name: <input type="text" name="uname" required="required">
@@ -39,9 +40,14 @@
          <input type="radio" name="customerType" value="Normal" required="required"> Normal
 
 <input type="submit" value="REGISTER">
+
+<input type="reset" value="RESET">
+
 </pre>
 
 </form>
+
+<a th:href="@{/customers/list}">Customer List</a>
 
 <span th:text="${msg}"></span>
 

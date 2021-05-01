@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:th="https://www.thymeleaf.org/">
+<head>
+<meta charset="ISO-8859-1">
+<title>GVP Lights</title>
+</head>
+<body>
+    <div>
+     <h3>Customers List</h3>
+     
+     <table border="2" cellpadding="10">
+        <thead>
+           <tr>
+               <th>ID</th>
+               <th>Name of the customer</th>
+               <th>User Name</th>
+               <th>Member Type</th>
+               <th>EDIT</th>
+               <th>DELETE</th>
+           </tr>
+        </thead>
+           <tr th:each="customer : ${allCustomersList}">
+               <td th:text="${customer.cusId}"> </td>
+               <td th:text="${customer.fname}"> </td>
+               <td th:text="${customer.uname}"> </td>
+               <td th:text="${customer.customerType}"> </td>
+               <td> </td>
+               
+               <td><a th:href="@{/customers/delete(cid=${customer.cusId})}"> DELETE </a>
+               <!-- <a th:href="@{/customers/delete/{cid}(cid=${customer.cusId})}"> DELETE </a> -->
+               </td>
+           </tr>
+        <tbody>
+        </tbody>
+     </table>
+    </div>
+    
+    <br>
+     
+    <a th:href="@{/customers/register}">Registration</a> <br> <br>
+    
+    <span th:text="${msg}"></span>
+    
+    
+    
+</body>
+</html>
