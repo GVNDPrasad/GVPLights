@@ -17,7 +17,7 @@ public class MailServiceImpl implements MailService {
 	private JavaMailSender sender;
 
 	public boolean send(String to, String[] cc, String[] bcc, String subject, String desc, Resource file) {
-		boolean sent = false;// Mail statis
+		boolean sent = false;// Mail status
 		try {
 			// 1. create new MimeMessage
 			MimeMessage message = sender.createMimeMessage();
