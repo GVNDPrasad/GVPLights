@@ -6,14 +6,14 @@ import com.mvc.gvplights.model.Customers;
 
 public interface CustomersService {
 	
+	//Save
 	public Customers save(Customers cusObj);
 	
-	//public String update();
+	//Update
+	public Customers update(Integer cid);
 	
 	//Delete
 	public void delete(Integer cid);
-	
-	//public String getCusId();
 	
 	//List of customers
 	public List<Customers> listAllCustomers();

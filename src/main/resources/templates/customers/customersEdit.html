@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org/">
+<head>
+<meta charset="ISO-8859-1">
+<title>Registration</title>
+
+<style>
+.myDiv {
+  border: 5px outset #9a9aa7;
+  background-color: lightblue;    
+}
+</style>
+</head>
+<body>
+  <div align="center" class="myDiv">
+        <h1>Customer Registration</h1>
+        <br />
+    <form th:action="@{/customers/save}" method="post" th:object="${customer}">
+    
+    <input type="hidden" th:field="*{cusId}"/>
+
+	 <table border="0" cellpadding="10">
+				<tr>
+					<td>First Name*</td>
+					<td><input type="text" name="fname" required="required" th:field="*{fname}">
+					</td>
+				</tr>
+				<tr>
+					<td>Last Name</td>
+					<td><input type="text" name="lname" th:field="*{lname}"></td>
+				</tr>
+				<tr>
+					<td>User Name*</td>
+					<td><input type="text" name="uname" required="required" th:field="*{uname}">
+					</td>
+				</tr>
+				<tr>
+					<td>Password*</td>
+					<td><input type="password" name="password" th:field="*{uname}"></td>
+				</tr>
+				<tr>
+					<td>Confirm Password*</td>
+					<td><input type="password" name="cpassword"></td>
+				</tr>
+				<tr>
+					<td>Gender*</td>
+					<td>
+					    <input type="radio" name="gender" value="MALE" required="required" th:field="*{gender}"> MALE 
+					    <input type="radio" name="gender" value="FEMALE" required="required" th:field="*{gender}"> FEMALE 
+					    <input type="radio" name="gender" value="TRANSGENDER" required="required" th:field="*{gender}"> TRANSGENDER
+				    </td>
+				</tr>
+				<tr>
+					<td>Date Of Birth*</td>
+					<td>
+					    <input type="date" name="dob" required="required" th:field="*{dob}">
+					</td>
+				</tr>
+				<tr>
+					<td>E-Mail*</td>
+					<td>
+					    <input type="email" name="email" th:field="*{email}">
+					</td>
+				</tr>
+				<tr>
+					<td>Contact No*</td>
+					<td>
+					    <input type="text" name="phone" th:field="*{phone}">
+					</td>
+				</tr>
+				<tr>
+					<td>Address*</td>
+					<td>
+					    <textarea rows="5" cols="50" name="address" required="required" th:field="*{address}"></textarea>
+					</td>
+				</tr>
+				<tr>
+					<td>Address Type*</td>
+					<td>
+					    <input type="radio" name="typeOfAddress" value="Permenant" required="required" th:field="*{typeOfAddress}"> Permanent Address 
+					    <input type="radio" name="typeOfAddress" value="Current" required="required" th:field="*{typeOfAddress}"> Current Address
+					</td>
+				</tr>
+				<tr>
+					<td>ID Proof</td>
+					<td>
+					    <input type="checkbox" name="idProof" value="Aadhar Card" th:field="*{idProof}"> Aadhar Card 
+					    <input type="checkbox" name="idProof" value="Passport" th:field="*{idProof}"> Passport 
+					    <input type="checkbox" name="idProof" value="Voter ID" th:field="*{idProof}"> Voter ID 
+					    <input type="checkbox" name="idProof" value="Pancard" th:field="*{idProof}"> Pancard 
+					    <input type="checkbox" name="idProof" value="Driving License" th:field="*{idProof}"> Driving License
+					</td>
+				</tr>
+				<tr>
+					<td>Customer Type*</td>
+					<td>
+					    <input type="radio" name="customerType" value="Member" required="required" th:field="*{customerType}"> Member 
+					    <input type="radio" name="customerType" value="Normal" required="required" th:field="*{customerType}"> Normal
+					</td>
+				</tr>
+				<tr>
+					<td><input type="submit" value="Update"></td>
+					<td><input type="reset" value="RESET"></td>
+				<tr>
+			</table>
+    </form>
+   </div>
+		<a th:href="@{/customers/list}">Customer List</a>
+		
+		<span th:text="${msg}"></span>
+
+</body>
+</html>

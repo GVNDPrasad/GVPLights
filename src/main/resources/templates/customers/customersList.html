@@ -16,6 +16,7 @@
                <th>Name of the customer</th>
                <th>User Name</th>
                <th>Member Type</th>
+               <th>ID Proof</th>
                <th>EDIT</th>
                <th>DELETE</th>
            </tr>
@@ -24,8 +25,19 @@
                <td th:text="${customer.cusId}"> </td>
                <td th:text="${customer.fname}"> </td>
                <td th:text="${customer.uname}"> </td>
-               <td th:text="${customer.customerType}"> </td>
-               <td> </td>
+               <td><!--  th:text="${customer.customerType}"-->
+               	<span th:each="ctype: ${customer.customerType}">
+               		<span th:text="${ctype}"></span>
+               	</span>
+                </td>
+                <td><!--  th:text="${customer.customerType}"-->
+               	<span th:each="proof: ${customer.idProof}">
+               		<span th:text="${proof}"></span>,
+               	</span>
+                </td>
+               <td> 
+                   <a th:href="@{/customers/edit(cid=${customer.cusId})}"> EDIT </a>
+               </td>
                
                <td><a th:href="@{/customers/delete(cid=${customer.cusId})}"> DELETE </a>
                <!-- <a th:href="@{/customers/delete/{cid}(cid=${customer.cusId})}"> DELETE </a> -->

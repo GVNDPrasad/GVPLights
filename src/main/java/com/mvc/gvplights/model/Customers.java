@@ -1,6 +1,7 @@
 package com.mvc.gvplights.model;
 
 import java.util.Date;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.CollectionTable;
@@ -9,9 +10,11 @@ import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.OrderColumn;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -68,13 +71,19 @@ public class Customers {
 	@Column(name="TYPE_OF_ADDRESS")
 	private String typeOfAddress; // Permanent or Temporary
 	
+	@ElementCollection(fetch = FetchType.EAGER)
+	@CollectionTable(name="CUSTOMERS_ID_PROOFS_TAB", joinColumns = @JoinColumn(name="CUS_ID"))
 	@Column(name="ID_PROOF")
-	private String idProof; // Aadhar or Passport or Voter or Driving License or Pancard
+	private List<String> idProof; // Aadhar or Passport or Voter or Driving License or Pancard
 	
-	@ElementCollection
-	@CollectionTable(name="CUSTOMERS_TYPE_TAB",joinColumns = @JoinColumn(name="CUS_ID"))
+	/*
+	 * @ElementCollection
+	 * 
+	 * @CollectionTable(name="CUSTOMERS_TYPE_TAB",joinColumns
+	 * = @JoinColumn(name="CUS_ID"))
+	 */
 	@Column(name="TYPE_OF_CUSTOMER")
-	private Set<String> customerType; // Member or Normal
+	private String customerType; // Member or Normal
 	
 	
 

@@ -1,55 +1,140 @@
 <!DOCTYPE html>
 <html xmlns:th="https://www.thymeleaf.org/">
 <head>
-<meta charset="ISO-8859-1">
-<title>Registration</title>
+	<meta charset="ISO-8859-1">
+	<title>GVP Lights</title>
+	
+	<style>
+	   h1,td{
+	     color: white;
+	   }
+	   
+	   div.right {
+	   		text-align: right;
+	   }
+	   
+	</style>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
-<body>
-    <form th:action="@{/customers/save}" method="post">
+<body th:background="@{${'/img/bg1.jpg'}}"><!-- background="../images/bg-01.jpg" -->
+    <!-- <div th:style="'background-image: url('+${img/bg1.jpg}+')'">
+    </div> -->
+    
+    <!-- <div class="container">
+    	<div class="row">
+    		<div class="col-lg-6 right">
+    			First Name*
+    		</div>
+    		<div class="col-lg-6">
+    			<input type="text" name="fname" required="required">
+    		</div>
+    	</div>
+    
+    </div> -->
+    
+	 <div align="center">
+        <h1>Customer Registration</h1>
+        <br />
+		<form th:action="@{/customers/save}" method="post">
 
-<pre>
+        <table border="0" cellpadding="10">
+			<tr>
+				<td>First Name*</td>
+				<td>
+				    <input type="text" name="fname" required="required">
+				</td>
+			</tr>
+			<tr>
+				<td>Last Name</td>
+				<td>
+				    <input type="text" name="lname">
+				</td>
+			</tr>
+			<tr>
+				<td>User Name*</td>
+				<td>
+				    <input type="text" name="uname" required="required">
+				</td>
+			</tr>
+			<tr>
+				<td>Password*</td>
+				<td>
+				    <input type="password" name="password" required="required">
+				</td>
+			</tr>
+			<tr>
+				<td>Confirm Password*</td>
+				<td>
+				    <input type="password" name="cpassword" required="required">
+				</td>
+			</tr>
+			<tr>
+				<td>Gender*</td>
+				<td>
+				    <input type="radio" name="gender" value="MALE" required="required"> MALE 
+				    <input type="radio" name="gender" value="FEMALE" required="required"> FEMALE 
+				    <input type="radio" name="gender" value="TRANSGENDER" required="required"> TRANSGENDER
+			    </td>
+			</tr>
+			<tr>
+				<td>Date Of Birth*</td>
+				<td>
+				    <input type="date" name="dob" required="required">
+				</td>
+			</tr>
+			<tr>
+				<td>E-Mail*</td>
+				<td>
+				   <input type="email" name="email">
+		        </td>
+			</tr>
+			<tr>
+				<td>Contact No*</td>
+				<td>
+				    <input type="text" name="phone">
+				</td>
+			</tr>
+			<tr>
+				<td>Address*</td>
+				<td>
+				    <textarea rows="5" cols="50" name="address" required="required"></textarea>
+				</td>
+			</tr>
+			<tr>
+				<td>Address Type*</td>
+				<td>
+				    <input type="radio" name="typeOfAddress" value="Permenant" required="required"> Permanent Address 
+					<input type="radio" name="typeOfAddress" value="Current" required="required"> Current Address
+				</td>
+			</tr>
+			<tr>
+				<td>ID Proof</td>
+				<td>
+				    <input type="checkbox" name="idProof" value="Aadhar Card"> Aadhar Card 
+				    <input type="checkbox" name="idProof" value="Passport"> Passport 
+				    <input type="checkbox" name="idProof" value="Voter ID"> Voter ID 
+				    <input type="checkbox" name="idProof" value="Pancard"> Pancard 
+				    <input type="checkbox" name="idProof" value="Driving License"> Driving License 
+				</td>
+			</tr>
+			<tr>
+				<td>Customer Type*</td>
+				<td>
+				    <input type="radio" name="customerType" value="Member" required="required"> Member 
+				    <input type="radio" name="customerType" value="Normal" required="required"> Normal
+				</td>
+			</tr>
+			<tr align="center">
+				<td><input type="submit" value="REGISTER"></td>
+				<td><input type="reset" value="RESET"></td>
+			<tr>
+		</table>
+	</form>
+   </div>
 
-*First Name: <input type="text" name="fname" required="required">
- Last Name: <input type="text" name="lname" required="required">
-*User Name: <input type="text" name="uname" required="required">
- 
-*Password: <input type="password" name="password">
-*Confirm Password: <input type="password" name="cpassword">
-
-*Gender: <input type="radio" name="gender" value="MALE" required="required"> MALE
-         <input type="radio" name="gender" value="FEMALE" required="required"> FEMALE
-         <input type="radio" name="gender" value="TRANSGENDER" required="required"> TRANSGENDER
- 
-*Date Of Birth: <input type="date" name="dob" required="required">
- 
-
-*E-Mail: <input type="email" name="email">
-*PH-No: <input type="text" name="phone">
- Address: <textarea rows="5" cols="50" name="address"></textarea>
- 
- Address Type: <input type="radio" name="typeOfAddress" value="Permenant" required="required"> Permanent Address
-         <input type="radio" name="typeOfAddress" value="Current" required="required"> Current Address
- 
- ID Proof: <input type="checkbox" name="idProof" value="Aadhar Card"> Aadhar Card
-      <input type="checkbox" name="idProof" value="Passport"> Passport
-      <input type="checkbox" name="idProof" value="Voter ID"> Voter ID
-      <input type="checkbox" name="idProof" value="Pancard"> Pancard
-      <input type="checkbox" name="idProof" value="Driving License"> Driving License
-      
- Customer Type: <input type="radio" name="customerType" value="Member" required="required"> Member
-         <input type="radio" name="customerType" value="Normal" required="required"> Normal
-
-<input type="submit" value="REGISTER">
-
-<input type="reset" value="RESET">
-
-</pre>
-
-</form>
-
-<a th:href="@{/customers/list}">Customer List</a>
-
-<span th:text="${msg}"></span>
+		<a th:href="@{/customers/list}">Customer List</a>
+	
+		<span th:text="${msg}"></span>
 
 </body>
 </html>

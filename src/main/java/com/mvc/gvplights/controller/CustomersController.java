@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.mvc.gvplights.model.Customers;
 import com.mvc.gvplights.service.CustomersService;
+import com.mvc.gvplights.service.MailService;
 
 @Controller
 @RequestMapping("/customers")
@@ -26,6 +27,11 @@ public class CustomersController {
 
 	@Autowired
 	private CustomersService cusService;
+	
+	@Autowired
+	private MailService mailService;
+	
+	String mailTo= "vndprasadgrandhi@gmail.com";
 	
 	@GetMapping("/register")
 	public String register() {
@@ -38,15 +44,21 @@ public class CustomersController {
         log.info("Started Controller :: CustomersController :: save()");
 		
 		Customers cus = cusService.save(cusObj);
-		String msg = "Hi"+cus.getFname()+"Successfully created your account";
-		model.addAttribute("message", msg);
+		String subject = "Welcome GVP Lights";
+		String desc = "Hi"+cus.getFname()+"Successfully created your account";
+		
+	    //Email purpose
+		mailService.send(mailTo, null, null, subject, desc, null);
+		
+		//Webpage purpose
+		model.addAttribute("message", desc);
 		
 		log.info("Ended Controller :: CustomersController :: save()");
 		return "redirect:list";
 
 	}
 	
-	@RequestMapping(value = "/delete")
+	@RequestMapping("/delete")
 	public String delete(@RequestParam("cid") Integer cid, Model model) {
 	   log.info("Started Controller :: CustomersController :: delete()");
 	   cusService.delete(cid);
@@ -73,6 +85,15 @@ public class CustomersController {
 		model.addAttribute("allCustomersList", custList);
 		log.info("Ended Controller :: CustomersController :: listAllCustomers()");
 		return "customers/customersList";		
+	}
+	
+	@RequestMapping("/edit")
+	public String update(@RequestParam("cid") Integer cid, Model model) {
+		log.info("Started Controller :: CustomersController :: update()"+cid);
+		Customers customer = cusService.update(cid);
+		log.info("Started Controller :: CustomersController :: update()"+customer);
+		model.addAttribute("customer", customer);
+		return "customers/customersEdit";
 	}
 	
 	
