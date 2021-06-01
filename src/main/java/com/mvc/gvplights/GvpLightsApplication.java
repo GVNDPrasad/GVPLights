@@ -11,7 +11,7 @@ public class GvpLightsApplication {
 	private static final Logger log = LoggerFactory.getLogger(GvpLightsApplication.class);
 
 	public static void main(String[] args) {
-		log.info("Entered GvpLightsApplication :: main() ");
+		log.info("Entered GvpLightsApplication :: main() : ");
 		SpringApplication.run(GvpLightsApplication.class, args);
 	}
 
