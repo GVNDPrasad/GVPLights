@@ -15,6 +15,7 @@ public class HomeController {
 	@GetMapping("/")
 	public String index() {
 		log.info("Entered Controller :: HomeController :: index()");
+		log.debug("checking");
 		return "welcome";
 	}
 
